@@ -8,7 +8,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app.py .
 COPY model_wrapper.py .
 COPY model_lean.pkl .
+COPY dashboard.py .
+COPY start.sh .
 
-EXPOSE 8000
+RUN chmod +x start.sh
 
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+EXPOSE 7860
+
+CMD ["./start.sh"]
